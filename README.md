@@ -4,6 +4,11 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gbprod/domain-event-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gbprod/domain-event-bundle/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/gbprod/domain-event-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/gbprod/domain-event-bundle/?branch=master)
 
+[![Latest Stable Version](https://poser.pugx.org/gbprod/domain-event-bundle/v/stable)](https://packagist.org/packages/gbprod/domain-event) 
+[![Total Downloads](https://poser.pugx.org/gbprod/domain-event-bundle/downloads)](https://packagist.org/packages/gbprod/domain-event) 
+[![Latest Unstable Version](https://poser.pugx.org/gbprod/domain-event-bundle/v/unstable)](https://packagist.org/packages/gbprod/domain-event) 
+[![License](https://poser.pugx.org/gbprod/domain-event-bundle/license)](https://packagist.org/packages/gbprod/domain-event)
+
 Integrates [domain event](https://github.com/gbprod/domain-event) library to a Symfony application
 
 ## Installation
