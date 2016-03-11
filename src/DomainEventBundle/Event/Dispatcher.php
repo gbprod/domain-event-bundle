@@ -4,7 +4,7 @@ namespace GBProd\DomainEventBundle\Event;
 
 use GBProd\DomainEvent\Dispatcher as DomainEventDispatcher;
 use GBProd\DomainEvent\DomainEvent;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Domain dispatcher implementation for symfony dispatcher
@@ -14,14 +14,14 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 class Dispatcher implements DomainEventDispatcher
 {
     /**
-     * @var EventDispatcher
+     * @var EventDispatcherInterface
      */
     private $dispatcher;
     
     /**
-     * @param EventDispatcher $dispatcher
+     * @param EventDispatcherInterface $dispatcher
      */
-    public function __construct(EventDispatcher $dispatcher)
+    public function __construct(EventDispatcherInterface $dispatcher)
     {
         $this->dispatcher = $dispatcher;
     }

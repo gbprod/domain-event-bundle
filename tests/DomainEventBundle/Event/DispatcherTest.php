@@ -4,7 +4,7 @@ namespace Tests\GBProd\DomainEventBundle\Dispatcher;
 
 use GBProd\DomainEventBundle\Event\Dispatcher;
 use GBProd\DomainEvent\DomainEvent;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\Event as SymfonyEvent;
 
 /**
@@ -17,7 +17,7 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
     public function testConstruct()
     {
         new Dispatcher(
-            $this->getMock(EventDispatcher::class)
+            $this->getMock(EventDispatcherInterface::class)
         );
     }
     
@@ -25,7 +25,7 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
     {
         $domainEvent = $this->getMock(DomainEvent::class);
         
-        $symfonyDispatcher = $this->getMock(EventDispatcher::class);
+        $symfonyDispatcher = $this->getMock(EventDispatcherInterface::class);
         
         $symfonyDispatcher
             ->expects($this->once())

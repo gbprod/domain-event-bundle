@@ -93,7 +93,7 @@ services:
 ```
 
 This will dispatch events using Symfony [Event dispatcher](https://github.com/symfony/event-dispatcher).
-The name of the event will be the classname (`SomethingHappenedEvent` in this example).
+The name of the event will be the classname of the event (`SomethingHappenedEvent` in this example).
 
 ## Create your listener
 
@@ -102,7 +102,7 @@ The name of the event will be the classname (`SomethingHappenedEvent` in this ex
 
 namespace GBProd\AcmeBundle\Listener;
 
-use Symfony\Component\EventDispatcher\Event
+use Symfony\Component\EventDispatcher\Event;
 
 class MyListener
 {
