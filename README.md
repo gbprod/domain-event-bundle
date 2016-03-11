@@ -1,5 +1,9 @@
 # Domain event bundle
 
+[![Build Status](https://travis-ci.org/gbprod/domain-event-bundle.svg?branch=master)](https://travis-ci.org/gbprod/domain-event-bundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gbprod/domain-event-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gbprod/domain-event-bundle/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/gbprod/domain-event-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/gbprod/domain-event-bundle/?branch=master)
+
 Integrates [domain event](https://github.com/gbprod/domain-event) library to a Symfony application
 
 ## Installation
@@ -70,10 +74,10 @@ class MyEntityRepository
     {
         $this->em->persist($entity);
         $this->em->flush();
-
-        $this->dispatcher->dispatch(
-            $entity->popEvents()
-        );
+        
+        foreach($entity->popEvents() as $event) {
+            $this->dispatcher->dispatch($event);
+        }
     }
 }
 ```
