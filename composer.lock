@@ -201,16 +201,16 @@
         },
         {
             "name": "gbprod/domain-event",
-            "version": "v0.1-alpha",
+            "version": "v0.1-alpha.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gbprod/domain-event.git",
-                "reference": "d1d65ceca3d1b17fe5545d94617261d24c569eaa"
+                "reference": "2ede6c283a33bc07a52708483df011c78ac3f950"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gbprod/domain-event/zipball/d1d65ceca3d1b17fe5545d94617261d24c569eaa",
-                "reference": "d1d65ceca3d1b17fe5545d94617261d24c569eaa",
+                "url": "https://api.github.com/repos/gbprod/domain-event/zipball/2ede6c283a33bc07a52708483df011c78ac3f950",
+                "reference": "2ede6c283a33bc07a52708483df011c78ac3f950",
                 "shasum": ""
             },
             "require-dev": {
@@ -234,7 +234,7 @@
                 }
             ],
             "description": "Library to manage domain events in a php DDD application",
-            "time": "2016-03-10 22:05:39"
+            "time": "2016-03-11 18:18:51"
         },
         {
             "name": "paragonie/random_compat",

@@ -4,6 +4,7 @@ namespace GBProd\DomainEventBundle\Event;
 
 use GBProd\DomainEvent\Dispatcher as DomainEventDispatcher;
 use GBProd\DomainEvent\DomainEvent;
+use GBProd\DomainEvent\EventProvider;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -25,21 +26,32 @@ class Dispatcher implements DomainEventDispatcher
     {
         $this->dispatcher = $dispatcher;
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function dispatch(DomainEvent $event)
+    public function dispatch(EventProvider $provider)
     {
-        $this->dispatcher->dispatch(
-            $this->resolveEventName($event),
-            new Event($event)
+        foreach ($provider->popEvents() as $event) {
+            $this->dispatcher->dispatch(
+                $this->resolveEventName($provider, $event),
+                new Event($event)
+            );
+        }
+    }
+    
+    private function resolveEventName(EventProvider $provider, DomainEvent $event)
+    {
+        return sprintf(
+            '%s.%s',
+            $this->getClassname($provider),
+            $this->getClassname($event)
         );
     }
     
-    private function resolveEventName(DomainEvent $event)
+    private function getClassname($object)
     {
-        $name = get_class($event);
+        $name = get_class($object);
         $pos = strrpos($name, '\\');
 
         return $this->name = false === $pos ? $name : substr($name, $pos + 1);

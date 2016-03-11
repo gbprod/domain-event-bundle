@@ -4,6 +4,8 @@ namespace Tests\GBProd\DomainEventBundle\Dispatcher;
 
 use GBProd\DomainEventBundle\Event\Dispatcher;
 use GBProd\DomainEvent\DomainEvent;
+use GBProd\DomainEvent\EventProvider;
+use GBProd\DomainEvent\EventProviderTrait;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\Event as SymfonyEvent;
 
@@ -12,12 +14,9 @@ use Symfony\Component\EventDispatcher\Event as SymfonyEvent;
  * 
  * @author gbprod <contact@gb-prod.fr>
  */
-class DispatcherTest extends \PHPUnit_Framework_TestCase implements DomainEvent
+class DispatcherTest extends \PHPUnit_Framework_TestCase implements EventProvider
 {
-    public function getAggregateId()
-    {
-        return 1;
-    }
+    use EventProviderTrait;
     
     public function testConstruct()
     {
@@ -28,13 +27,16 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase implements DomainEvent
     
     public function testDispatchEvent()
     {
+        $event = $this->getMock('GBProd\DomainEvent\DomainEvent');
+        $this->raise($event);
+        
         $symfonyDispatcher = $this->getMock(EventDispatcherInterface::class);
         
         $symfonyDispatcher
             ->expects($this->once())
             ->method('dispatch')
             ->with(
-                'DispatcherTest',
+                'DispatcherTest.'.get_class($event),
                 $this->isInstanceOf(SymfonyEvent::class)
             )
         ;

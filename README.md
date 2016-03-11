@@ -80,9 +80,7 @@ class MyEntityRepository
         $this->em->persist($entity);
         $this->em->flush();
         
-        foreach($entity->popEvents() as $event) {
-            $this->dispatcher->dispatch($event);
-        }
+        $this->dispatcher->dispatch($entity);
     }
 }
 ```
@@ -98,7 +96,7 @@ services:
 ```
 
 This will dispatch events using Symfony [Event dispatcher](https://github.com/symfony/event-dispatcher).
-The name of the event will be the classname of the event (`SomethingHappenedEvent` in this example).
+The name of the event will be the classname of the aggregate and the event (`MyEntity.SomethingHappenedEvent` in this example).
 
 ## Create your listener
 
@@ -126,5 +124,5 @@ class MyListener
 gbprod_acme.event_listener.my_listener:
     class: GBProd\AcmeBundle\Listener\MyListener
     tags:
-        - { name: kernel.event_listener, event: SomethingHappenedEvent, method: 'onSomethingHappened' }
+        - { name: kernel.event_listener, event: MyEntity.SomethingHappenedEvent, method: 'onSomethingHappened' }
 ```
