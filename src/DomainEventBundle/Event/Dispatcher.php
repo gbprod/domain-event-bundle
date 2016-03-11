@@ -32,8 +32,16 @@ class Dispatcher implements DomainEventDispatcher
     public function dispatch(DomainEvent $event)
     {
         $this->dispatcher->dispatch(
-            get_class($event),
+            $this->resolveEventName($event),
             new Event($event)
         );
+    }
+    
+    private function resolveEventName(DomainEvent $event)
+    {
+        $name = get_class($event);
+        $pos = strrpos($name, '\\');
+
+        return $this->name = false === $pos ? $name : substr($name, $pos + 1);
     }
 }
