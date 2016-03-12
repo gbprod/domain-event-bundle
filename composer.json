@@ -16,7 +16,6 @@
             "email": "contact@gb-prod.fr"
         }
     ],
-    "minimum-stability": "alpha",
     "autoload": {
         "psr-4": {
             "GBProd\\": "src/",
