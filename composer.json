@@ -3,7 +3,7 @@
     "description": "Integrates domain event library to a Symfony application",
     "type": "bundle",
     "require": {
-        "gbprod/domain-event": "~0.1@alpha",
+        "gbprod/domain-event": "^0.1",
         "symfony/framework-bundle": "^2.3|^3.0"
     },
     "require-dev": {
